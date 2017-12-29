@@ -57,12 +57,12 @@ def status():
     """
     response = server.status()
     click.echo("version: v{} (protocol {})".format(response.version.name, response.version.protocol))
-    click.echo("description: \"{}\"".format(response.description))
+    click.echo("description: '{}'".format(response.description))
     click.echo(
-        "players: {}/{} {}".format(
-            response.players.online,
-            response.players.max,
-            [
+        "players: {players_online}/{players_max} {players_list}".format(
+            players_online=response.players.online,
+            players_max=response.players.max,
+            players_list=[
                 "{} ({})".format(player.name, player.id)
                 for player in response.players.sample
             ] if response.players.sample is not None else "No players online"
@@ -78,14 +78,17 @@ def query():
     """
     response = server.query()
     click.echo("host: {}:{}".format(response.raw['hostip'], response.raw['hostport']))
-    click.echo("software: v{} {}".format(response.software.version, response.software.brand))
+    click.echo("software: v{version} {brand}".format(
+        version=response.software.version,
+        brand=response.software.brand,
+    ))
     click.echo("plugins: {}".format(response.software.plugins))
-    click.echo("motd: \"{}\"".format(response.motd))
+    click.echo("motd: '{}'".format(response.motd))
     click.echo(
-        "players: {}/{} {}".format(
-            response.players.online,
-            response.players.max,
-            response.players.names,
+        "players: {players_online}/{players_max} {players_list}".format(
+            players_online=response.players.online,
+            players_max=response.players.max,
+            players_list=response.players.names,
         )
     )
 

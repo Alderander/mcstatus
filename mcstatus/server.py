@@ -17,13 +17,13 @@ class MinecraftServer:
         if ":" in address:
             parts = address.split(":")
             if len(parts) > 2:
-                raise ValueError("Invalid address '%s'" % address)
+                raise ValueError(f"Invalid address '{address}'")
             host = parts[0]
             port = int(parts[1])
         if port is None:
             port = 25565
             try:
-                answers = dns.resolver.query("_minecraft._tcp." + host, "SRV")
+                answers = dns.resolver.query(f"_minecraft._tcp.{host}", "SRV")
                 if len(answers):
                     answer = answers[0]
                     host = str(answer.target).rstrip(".")
