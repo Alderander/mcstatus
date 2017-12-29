@@ -79,3 +79,16 @@ Alternatively, just clone this repo!
 ## License
 
 mcstatus is licensed under Apache 2.0.
+
+
+## Dev
+
+### Package management
+
+Always work in virtualenv!
+
+```bash
+pip install pip-tools
+```
+
+Then use [scripts](./scripts)
