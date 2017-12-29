@@ -5,7 +5,8 @@ from setuptools import setup
 PY2 = sys.version_info[0] == 2
 
 install_requires = [
-    'Click'
+    'Click',
+    'dnspython',
 ]
 
 setup(
