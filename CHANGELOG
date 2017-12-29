@@ -1,3 +1,6 @@
+3.0.0
+    * DROP Python2 support! Now we can develop at full speed!
+
 2.2
     * Added new CLI
     * Clean up sockets better

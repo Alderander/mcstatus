@@ -1,7 +1,6 @@
 import datetime
 import json
 import random
-from six import string_types
 
 from mcstatus.protocol.connection import Connection
 
@@ -73,13 +72,13 @@ class PingResponse:
 
                 if "name" not in raw:
                     raise ValueError("Invalid player object (no 'name' value)")
-                if not isinstance(raw["name"], string_types):
+                if not isinstance(raw["name"], str):
                     raise ValueError("Invalid player object (expected 'name' to be str, was %s)" % type(raw["name"]))
                 self.name = raw["name"]
 
                 if "id" not in raw:
                     raise ValueError("Invalid player object (no 'id' value)")
-                if not isinstance(raw["id"], string_types):
+                if not isinstance(raw["id"], str):
                     raise ValueError("Invalid player object (expected 'id' to be str, was %s)" % type(raw["id"]))
                 self.id = raw["id"]
 
@@ -113,7 +112,7 @@ class PingResponse:
 
             if "name" not in raw:
                 raise ValueError("Invalid version object (no 'name' value)")
-            if not isinstance(raw["name"], string_types):
+            if not isinstance(raw["name"], str):
                 raise ValueError("Invalid version object (expected 'name' to be str, was %s)" % type(raw["name"]))
             self.name = raw["name"]
 

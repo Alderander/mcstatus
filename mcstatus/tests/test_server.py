@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from mock import patch, Mock
+from unittest.mock import patch, Mock
 
 from mcstatus.protocol.connection import Connection
 from mcstatus.server import MinecraftServer
