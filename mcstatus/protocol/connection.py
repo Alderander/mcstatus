@@ -152,7 +152,7 @@ class TCPSocketConnection(Connection):
     def __del__(self):
         try:
             self.socket.close()
-        except:
+        except Exception:
             pass
 
 
@@ -186,5 +186,5 @@ class UDPSocketConnection(Connection):
     def __del__(self):
         try:
             self.socket.close()
-        except:
+        except Exception:
             pass

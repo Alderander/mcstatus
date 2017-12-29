@@ -1,6 +1,6 @@
 import click
 
-from .. import MinecraftServer
+from mcstatus.server import MinecraftServer
 
 server = None
 

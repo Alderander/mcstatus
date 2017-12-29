@@ -98,3 +98,8 @@ Then use [scripts](./scripts)
 ```bash
 nosetests
 ```
+
+### Static analysis
+```bash
+flake8
+```

@@ -1,7 +1,8 @@
+import dns.resolver
+
 from mcstatus.pinger import ServerPinger
 from mcstatus.protocol.connection import TCPSocketConnection, UDPSocketConnection
 from mcstatus.querier import ServerQuerier
-import dns.resolver
 
 
 class MinecraftServer:

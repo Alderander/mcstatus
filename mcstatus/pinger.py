@@ -100,7 +100,8 @@ class PingResponse:
 
             if "sample" in raw:
                 if type(raw["sample"]) is not list:
-                    raise ValueError("Invalid players object (expected 'sample' to be list, was %s)" % type(raw["max"]))
+                    raise ValueError(
+                        "Invalid players object (expected 'sample' to be list, was %s)" % type(raw["max"]))
                 self.sample = [PingResponse.Players.Player(p) for p in raw["sample"]]
             else:
                 self.sample = None
@@ -119,7 +120,8 @@ class PingResponse:
             if "protocol" not in raw:
                 raise ValueError("Invalid version object (no 'protocol' value)")
             if type(raw["protocol"]) is not int:
-                raise ValueError("Invalid version object (expected 'protocol' to be int, was %s)" % type(raw["protocol"]))
+                raise ValueError(
+                    "Invalid version object (expected 'protocol' to be int, was %s)" % type(raw["protocol"]))
             self.protocol = raw["protocol"]
 
     def __init__(self, raw):
