@@ -92,3 +92,9 @@ pip install pip-tools
 ```
 
 Then use [scripts](./scripts)
+
+### Test
+
+```bash
+nosetests
+```
