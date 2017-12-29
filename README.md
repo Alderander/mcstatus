@@ -1,11 +1,11 @@
-mcstatus
-========
+# mcstatus
+
+[![Build Status](https://travis-ci.org/Behoston/mcstatus.svg?branch=master)](https://travis-ci.org/Behoston/mcstatus)
 
 `mcstatus` provides an easy way to query Minecraft servers for any information they can expose.
 It provides three modes of access (`query`, `status` and `ping`), the differences of which are listed below in usage.
 
-Usage
------
+## Usage
 
 ```python
 from mcstatus import MinecraftServer
@@ -66,8 +66,7 @@ Commands:
   status  basic server information
 ```
 
-Installation
-------------
+## Installation
 
 mcstatus is available on pypi, and can be installed trivially with:
 
@@ -77,7 +76,6 @@ pip install mcstatus
 
 Alternatively, just clone this repo!
 
-License
--------
+## License
 
 mcstatus is licensed under Apache 2.0.
