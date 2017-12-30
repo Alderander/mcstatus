@@ -14,15 +14,25 @@ class TestServerPinger(TestCase):
         self.assertEqual(self.pinger.connection.flush(), bytearray.fromhex("0F002C096C6F63616C686F737463DD01"))
 
     def test_read_status(self):
-        self.pinger.connection.receive(bytearray.fromhex(
-            "7200707B226465736372697074696F6E223A2241204D696E65637261667420536572766572222C22706C6179657273223A7B22"
-            "6D6178223A32302C226F6E6C696E65223A307D2C2276657273696F6E223A7B226E616D65223A22312E382D70726531222C2270"
-            "726F746F636F6C223A34347D7D"
-        ))
+        raw_response_hex = ("7200707B226465736372697074696F6E223A2241204D696E65637261667420536572766572222C22706"
+                            "C6179657273223A7B226D6178223A32302C226F6E6C696E65223A307D2C2276657273696F6E223A7B22"
+                            "6E616D65223A22312E382D70726531222C2270726F746F636F6C223A34347D7D")
+        raw_response_dict = {
+            "description": "A Minecraft Server",
+            "players": {
+                "max": 20,
+                "online": 0,
+            },
+            "version": {
+                "name": "1.8-pre1",
+                "protocol": 44,
+            },
+        }
+
+        self.pinger.connection.receive(bytearray.fromhex(raw_response_hex))
         status = self.pinger.read_status()
 
-        self.assertEqual(status.raw, {"description": "A Minecraft Server", "players": {"max": 20, "online": 0},
-                                      "version": {"name": "1.8-pre1", "protocol": 44}})
+        self.assertEqual(status.raw, raw_response_dict)
         self.assertEqual(self.pinger.connection.flush(), bytearray.fromhex("0100"))
 
     def test_read_status_invalid_json(self):
@@ -30,9 +40,9 @@ class TestServerPinger(TestCase):
         self.assertRaises(IOError, self.pinger.read_status)
 
     def test_read_status_invalid_reply(self):
-        self.pinger.connection.receive(bytearray.fromhex(
-            "4F004D7B22706C6179657273223A7B226D6178223A32302C226F6E6C696E65223A307D2C2276657273696F6E223A7B226E616"
-            "D65223A22312E382D70726531222C2270726F746F636F6C223A34347D7D"))
+        raw_response_hex = ("4F004D7B22706C6179657273223A7B226D6178223A32302C226F6E6C696E65223A307D2C2276657"
+                            "273696F6E223A7B226E616D65223A22312E382D70726531222C2270726F746F636F6C223A34347D7D")
+        self.pinger.connection.receive(bytearray.fromhex(raw_response_hex))
 
         self.assertRaises(IOError, self.pinger.read_status)
 
