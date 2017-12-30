@@ -1,6 +1,7 @@
 # mcstatus
 
 [![Build Status](https://travis-ci.org/Behoston/mcstatus.svg?branch=master)](https://travis-ci.org/Behoston/mcstatus)
+[![codecov](https://codecov.io/gh/Behoston/mcstatus/branch/master/graph/badge.svg)](https://codecov.io/gh/Behoston/mcstatus)
 
 `mcstatus` provides an easy way to query Minecraft servers for any information they can expose.
 It provides three modes of access (`query`, `status` and `ping`), the differences of which are listed below in usage.
@@ -96,7 +97,7 @@ Then use [scripts](./scripts)
 ### Test
 
 ```bash
-nosetests
+nosetests --with-coverage
 ```
 
 ### Static analysis

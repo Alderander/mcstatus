@@ -4,6 +4,8 @@ python:
 install:
   - pip install -r requirements/base.txt
   - pip install -r requirements/test.txt
+  - pip install codecov
 script:
   - flake8
-  - nosetests
+  - nosetests --with-coverage
+  - codecov
